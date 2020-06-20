@@ -14,7 +14,7 @@
 		data: function () {
 			return {
 				navList: [
-					{url: "/home", name: "Home", show: true},
+					{url: "/", name: "Home", show: true},
 					{url: "/signup", name: "Sign Up", show: !this.signedIn},
 					{url: "/login", name: "Log In", show: !this.signedIn},
 					{url: "/logout", name: "Sign Out", show: this.signedIn},
