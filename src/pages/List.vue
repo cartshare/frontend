@@ -2,6 +2,7 @@
 	<main-layout>
 		<h3>Your List</h3>
 		<shopping-list :list="list"></shopping-list>
+		<a href="/create">Create Shopping Item</a>
 	</main-layout>
 </template>
 

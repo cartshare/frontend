@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Logout from "./pages/Logout";
 import List from "./pages/List";
 import Wishlists from "./pages/Wishlists";
+import Create from "./pages/Create";
 
 export default {
 	"/": Home,
@@ -11,5 +12,6 @@ export default {
 	"/login": Login,
 	"/logout": Logout,
 	"/list": List,
-	"/wishlists": Wishlists
+	"/wishlists": Wishlists,
+	"/create": Create
 }

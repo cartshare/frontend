@@ -1,6 +1,6 @@
 <template>
 	<main-layout>
-		<shopping-list></shopping-list>
+		<shopping-list :list="itemList"></shopping-list>
 	</main-layout>
 </template>
 
@@ -10,7 +10,10 @@
 
 	export default {
 		name: "Wishlists",
-		components: {ShoppingList, MainLayout}
+		components: {ShoppingList, MainLayout},
+		data: function () {
+			return {itemList: []}
+		}
 	}
 </script>
 
