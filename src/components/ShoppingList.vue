@@ -1,13 +1,17 @@
 <template>
 	<ul class="list">
-		<li v-for="item in list" :key="item.desc" :title="item.desc + '(' + item.qty + 'x)'">{{item.desc}} <span
-				class="itemQty">{{item.qty}}x&nbsp;&nbsp;&nbsp;</span>
+		<li v-for="item in list" :key="item.desc" :title="item.desc + '(x' + item.qty + ')'">
+			<p>{{item.desc}}</p>
+			<span class="itemQty">x{{item.qty}}</span>
 			<template v-if="personal">
-				<label :for="item.id">Wishlist: </label>
-				<input type="checkbox" v-if="personal" @change="setWishlist" :id="item.id" :checked="item.onWishlist"/>&nbsp;&nbsp;&nbsp;
+				<label :for="item.id">
+					<button @click="setWishlist" :class="item.onWishlist ? 'wl-remove' : 'wl-add'" :id="item.id">{{item.onWishlist ?
+						"Remove From Wishlist" : "Add To Wishlist"}}
+					</button>
+				</label>
 			</template>
 			<template v-else>
-				(Request by: {{item.owner}})
+				(Requested by: {{item.owner}})
 			</template>
 			<button @click="complete(item.id)">Complete</button>
 		</li>
@@ -24,29 +28,42 @@
 		methods: {
 			setWishlist(e) {
 				const target = e.target;
-				const data = {itemId: target.id, wishlisted: target.checked};
+				let wishlisted = target.classList.contains("wl-add");
+				const data = {itemId: target.id, wishlisted: wishlisted};
 				const json = JSON.stringify(data);
 				fetch("http://localhost:80/setItemWishlisted", {
 					method: "POST",
 					credentials: "include",
 					body: json
-				});
+				})
+				.then(() => window.location.reload())
+				.catch(error => alert(error));
 			},
 			complete(id) {
 				const data = {itemId: id};
 				const json = JSON.stringify(data);
 
-				fetch("http://localhost:80/completeItem",{
+				fetch("http://localhost:80/completeItem", {
 					method: "POST",
 					credentials: "include",
 					body: json
 				})
-				.then(() => window.location.reload())
+					.then(() => window.location.reload())
 			}
 		}
 	}
 </script>
 
 <style scoped>
+	.list > * {
+		display: flex;
+	}
 
+	.list li * {
+		padding: 5px;
+	}
+
+	.itemQty {
+		opacity: 0.5;
+	}
 </style>

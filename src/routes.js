@@ -7,11 +7,11 @@ import Wishlists from "./pages/Wishlists";
 import Create from "./pages/Create";
 
 export default {
-	"/": Home,
-	"/signup": Signup,
-	"/login": Login,
-	"/logout": Logout,
-	"/list": List,
-	"/wishlists": Wishlists,
-	"/create": Create
-}
+  "/": Home,
+  "/signup": Signup,
+  "/login": Login,
+  "/logout": Logout,
+  "/list": List,
+  "/wishlists": Wishlists,
+  "/create": Create
+};

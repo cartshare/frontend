@@ -1,6 +1,21 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
+  box-sizing: border-box;
+  font-style: inherit;
+  margin: 0;
+}
+
+:root {
+  --primary-color: hsl(120, 50%, 60%);
+  background: radial-gradient(
+    circle at right,
+    hsl(110, 20%, 80%, 0.7),
+    hsl(120, 30%, 80%, 0.7)
+  );
+
+  font-family: Avenir, Roboto, sans-serif;
+
+  width: 100vw;
+  height: 100vh;
 }
 
 html,
@@ -17,8 +32,16 @@ label {
 }
 
 [icon]:before {
+<<<<<<< HEAD
 	content: attr(icon);
 	padding: 0.25em;
+=======
+  content: attr(icon);
+  padding: 0.25em;
+  display: inline-flex;
+  place-items: center;
+  font-size: 1.5em;
+>>>>>>> b2e0001565a268222031fb5f7e536052a582359a
 }
 
 a {
@@ -106,7 +129,6 @@ label span:first-child {
 	text-transform: uppercase;
 	letter-spacing: 0.2ch;
 }
-
 
 .hideable {
 	transition: 0.2s;

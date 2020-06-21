@@ -1,7 +1,6 @@
 <template>
 	<main-layout>
 		<form @submit.prevent="send">
-			<div class="error" v-if="err">{{err}}</div>
 			<label>
 				<span>
 					<svg class="bi bi-person-circle" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -9,6 +8,7 @@
 						<path fill-rule="evenodd" d="M8 9a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
 						<path fill-rule="evenodd" d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zM0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8z"/>
 					</svg>
+					Email
 				</span>
 				<input id="email" name="email" type="email" placeholder="Email" required/>
 			</label>
@@ -18,9 +18,11 @@
 						<rect width="11" height="9" x="2.5" y="7" rx="2"/>
 						<path fill-rule="evenodd" d="M4.5 4a3.5 3.5 0 1 1 7 0v3h-1V4a2.5 2.5 0 0 0-5 0v3h-1V4z"/>
 					</svg>
+					Password
 				</span>
 				<input id="password" name="password" type="password" placeholder="Password" required/>
 			</label>
+			<div class="error" v-if="err">{{err}}</div>
 			<input type="submit"/>
 		</form>
 	</main-layout>

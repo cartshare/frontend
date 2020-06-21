@@ -1,27 +1,11 @@
 <template>
 	<main-layout>
-		<template v-if="loggedIn">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum mattis fermentum feugiat. Fusce in
-				dictum
-				erat. Aliquam scelerisque sem non justo tincidunt tristique. Morbi viverra tellus dapibus lacus
-				eleifend,
-				non sollicitudin est pretium. Duis id ultrices lorem. Cras tincidunt ultricies sapien, sit amet accumsan
-				nunc congue vel. Donec rhoncus felis. Nam augue lacus, sodales id condimentum quis, porttitor ac
-				velit. Donec porta sapien id orci dapibus pellentesque.</p>
-			<p>Fusce in sodales metus, semper finibus diam. Donec sed dictum metus, sed viverra neque. Fusce et neque
-				posuere, porttitor. Cras vel elementum odio. Sed lacinia quis lorem lacinia consequat. Integer sed nunc
-				faucibus, consequat dui non, aliquet ipsum. Duis non imperdiet quam, sit amet finibus nulla. Aenean
-				eleifend
-				euismod magna, nec tincidunt diam mattis eu. Ut id nisl nisi. Donec ut sapien eu velit rhoncus elementum
-				sed
-				vel urna.
-			</p>
-		</template>
-		<template v-else>
-			<div v-for="notif in notifications" :key="notif.">
-
-			</div>
-		</template>
+		<h2>What's on <b>your</b> list today?</h2>
+		<div class="notification" v-for="notif in notifications" :key="notif.id" :id="notif.id">
+			<h4>{{notif.title}}</h4>
+			<p>{{notif.body}}</p>
+			<button @click="deleteNotif(notif.id)">Delete Notification</button>
+		</div>
 	</main-layout>
 </template>
 
@@ -33,13 +17,39 @@
 		components: {MainLayout},
 		data: function () {
 			return {
-				loggedIn: false,
 				notifications: []
 			}
+		},
+		methods: {
+			deleteNotif: function (id) {
+				const body = {notificationId: id};
+				const json = JSON.stringify(body);
+
+				fetch("http://localhost:80/deleteNotifications", {
+					method: "POST",
+					credentials: "include",
+					body: json
+				})
+					.then(() => window.location.reload());
+			}
+		},
+		created: function () {
+			fetch("http://localhost:80/notifications", {
+				method: "POST",
+				credentials: "include"
+			})
+				.then(response => response.json())
+				.then(result => this.notifications = result.notifications)
+				.catch(error => alert(error));
 		}
 	}
 </script>
 
 <style scoped>
-
+.notification {
+	border: 2px solid black;
+	border-radius: 3px;
+	background: white;
+	padding: 10px;
+}
 </style>

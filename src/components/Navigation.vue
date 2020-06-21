@@ -21,11 +21,11 @@
 		computed: {
 			navList: function () {
 				return [
+					{url: "/list", name: "My List", show: this.signedIn},
+					{url: "/wishlists", name: "Neighbors' Wishlists", show: this.signedIn},
 					{url: "/signup", name: "Sign Up", show: !this.signedIn},
 					{url: "/login", name: "Log In", show: !this.signedIn},
 					{url: "/logout", name: "Sign Out", show: this.signedIn},
-					{url: "/list", name: "My List", show: this.signedIn},
-					{url: "/wishlists", name: "Neighbors' Wishlists", show: this.signedIn}
 				];
 			}
 		},
@@ -54,5 +54,48 @@
 	#logo {
 		font-size: 1.65em;
 		margin-right: auto;
+	}
+
+	#logo {
+		display: grid;
+		grid-auto-flow: column;
+		align-items: center;
+		gap: 0.3em;
+		
+		font-weight: bold;
+		--text-shadow: rgba(0, 0, 0, 0.2);
+		text-shadow: 0.02em 0.02em 0.1em var(--text-shadow);
+		font-size: 1.75rem;
+		transform-origin: left top;
+
+		animation: LogoIntro 1 2s;
+	}
+	#logo:before {
+		display: inline-grid;
+		animation: Oscillate 3s infinite;
+	}
+	@keyframes LogoIntro {
+		from, 70% {
+			background-color: var(--primary-color);
+			box-shadow: 0 0 0 50vw var(--primary-color);
+			font-size: 2.8rem;
+			transform: translate(-50%, -50%) translate(50vw, 50vh);
+			z-index: 1;
+		}
+		from {
+			color: rgba(255, 255, 255, 0.02);
+			text-shadow: 0 0 transparent;
+		}
+		20% {
+			color: unset;
+			text-shadow: 0 0 transparent;
+		}
+		to {
+			box-shadow: 0 0 0 100vw transparent;
+		}
+	}
+	@keyframes Oscillate {
+		from, to { transform: translateY(0.02em); }
+		50% { transform: translateY(-0.02em); }
 	}
 </style>

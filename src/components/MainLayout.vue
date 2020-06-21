@@ -2,7 +2,7 @@
 	<div>
 		<navigation :signed-in="signedIn"></navigation>
 		<main>
-			<slot></slot>
+			<slot :signed-in="signedIn"></slot>
 		</main>
 	</div>
 </template>
