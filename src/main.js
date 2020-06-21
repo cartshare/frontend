@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import routes from "./routes";
 import NotFound from "./pages/404"
+import "bootstrap/dist/css/bootstrap.min.css"
 
 Vue.config.productionTip = false;
 

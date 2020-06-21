@@ -1,18 +1,25 @@
 <template>
-	<ul class="navigation">
-		<template v-for="nav in navList">
-			<li v-if="nav.show" :key="nav.url">
-				<a :href="nav.url" :title="nav.name">{{nav.name}}</a>
-			</li>
-		</template>
-	</ul>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<div class="container-fluid" id="">
+			<a class="navbar-brand" href="/">CartShare</a>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav ml-auto">
+					<template v-for="nav in navList">
+						<li v-if="nav.show" :key="nav.url" class="nav-item">
+							<a :href="nav.url" :title="nav.name" class="nav-link">{{nav.name}}</a>
+						</li>
+					</template>
+				</ul>
+			</div>
+		</div>
+	</nav>
 </template>
 
 <script>
 	export default {
 		name: "Navigation",
 		computed: {
-			navList: function() {
+			navList: function () {
 				return [
 					{url: "/", name: "Home", show: true},
 					{url: "/signup", name: "Sign Up", show: !this.signedIn},
