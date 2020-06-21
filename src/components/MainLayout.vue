@@ -1,7 +1,9 @@
 <template>
-	<div class="container">
+	<div>
 		<navigation :signed-in="signedIn"></navigation>
-		<slot></slot>
+		<main>
+			<slot></slot>
+		</main>
 	</div>
 </template>
 
@@ -31,5 +33,10 @@
 </script>
 
 <style scoped>
-
+	main {
+		padding: 1rem;
+	}
+	main > * + * {
+		margin-top: 1em;
+	}
 </style>
