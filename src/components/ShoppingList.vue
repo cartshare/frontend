@@ -1,13 +1,14 @@
 <template>
 	<ul class="list">
-		<li v-for="item in list" :key="item.desc" :title="item.desc + '(' + item.qty + 'x)'">{{item.desc}} <span
-				class="itemQty">{{item.qty}}x&nbsp;&nbsp;&nbsp;</span>
+		<li v-for="item in list" :key="item.desc" :title="item.desc + '(x' + item.qty + ')'">
+			<p>{{item.desc}}</p>
+			<span class="itemQty">x{{item.qty}}</span>
 			<template v-if="personal">
 				<label :for="item.id">Wishlist: </label>
-				<input type="checkbox" v-if="personal" @change="setWishlist" :id="item.id" :checked="item.onWishlist"/>&nbsp;&nbsp;&nbsp;
+				<input type="checkbox" @change="setWishlist" :id="item.id" :checked="item.onWishlist"/>
 			</template>
 			<template v-else>
-				(Request by: {{item.owner}})
+				(Requested by: {{item.owner}})
 			</template>
 			<button @click="complete(item.id)">Complete</button>
 		</li>
@@ -48,5 +49,10 @@
 </script>
 
 <style scoped>
-
+.list > * {
+	display: flex;
+}
+.itemQty {
+	opacity: 0.7;
+}
 </style>
