@@ -1,7 +1,12 @@
 <template>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 		<div class="container-fluid" id="">
-			<a class="navbar-brand" href="/">CartShare</a>
+			<a class="navbar-brand" href="/"><img src="../assets/logo.png" width="32px" height="32px" alt="" class="d-inline-block align-top"/>CartShare</a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+					aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav ml-auto">
 					<template v-for="nav in navList">
