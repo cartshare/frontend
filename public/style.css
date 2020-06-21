@@ -1,3 +1,142 @@
-.bi {
-	margin: 2px;
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+html,
+body,
+header,
+main,
+footer,
+form,
+label {
+  display: grid;
+  place-items: stretch;
+  /* min-width: 0; */
+  min-height: 0;
+}
+
+[icon]:before {
+  content: attr(icon);
+  padding: 0.25em;
+}
+
+a {
+  color: hsl(120, 50%, 30%);
+  text-decoration: none;
+}
+
+form {
+  padding: 1.5em;
+  gap: 1em;
+}
+
+.radio-group {
+  display: grid;
+  overflow-x: auto;
+  /* grid-auto-flow: column; */
+  grid-template-columns: repeat(auto-fit, minmax(2.7rem, 1fr));
+  gap: 0.5em;
+}
+input[type="radio"] {
+  visibility: hidden;
+  position: fixed;
+}
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+input[type="radio"] + span,
+input[type="submit"],
+button,
+textarea {
+  -webkit-appearance: none;
+  border: none;
+  border-radius: 0.2em;
+  padding: 0.5em 0.75em;
+
+  border: rgba(0, 0, 0, 0.2) solid 1px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0 2px;
+
+  /* background-color: rgba(255, 255, 255, 0.9); */
+  background-color: transparent;
+  /* backdrop-filter: brightness(200%); */
+  backdrop-filter: brightness(250%);
+  transition: 0.2s;
+  transition-property: background-color, backdrop-filter, color;
+}
+input:hover,
+button:hover,
+textarea:hover {
+  /* background-color: rgba(255, 255, 255, 1); */
+  backdrop-filter: brightness(210%);
+}
+
+input[type="radio"]:checked + span {
+  /* background-color: var(--primary-color); */
+  background-color: rgba(0, 0, 0, 0.2);
+  color: #fff;
+}
+
+input.inline {
+  border: none;
+  padding: 0;
+  max-width: 6em;
+}
+
+button,
+input[type="submit"] {
+  line-height: 1;
+  padding: 0.5em 0.75em;
+
+  cursor: pointer;
+}
+
+label {
+  gap: 0.3em;
+}
+label span:first-child {
+  opacity: 0.5;
+  font-size: 0.7em;
+  text-transform: uppercase;
+  letter-spacing: 0.2ch;
+}
+
+
+.hideable {
+  transition: 0.2s;
+  transition: 0.3s all, transform 0.5s cubic-bezier(0, 1.03, 0.1, 1.44);
+}
+.modal {
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(5px) hue-rotate(-60deg);
+  box-shadow: rgba(0, 0, 0, 0.2) 0 1px 0.5em, rgba(0, 0, 0, 0.1) 0 2px 1em;
+  position: absolute;
+}
+.modal .close {
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+  width: 2em;
+  height: 2em;
+  padding: 0;
+}
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  /* top: 4rem;
+	right: 0; */
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  border-radius: 0.5em;
+}
+.modal[hidden] {
+  transform: translate(-50%, -50%) translateY(10%);
+  opacity: 0;
+  user-select: none;
+  pointer-events: none;
 }
