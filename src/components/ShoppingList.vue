@@ -6,6 +6,9 @@
 				<label :for="item.id">Wishlist: </label>
 				<input type="checkbox" v-if="personal" @change="setWishlist" :id="item.id" :checked="item.onWishlist"/>&nbsp;&nbsp;&nbsp;
 			</template>
+			<template v-else>
+				(Request by: {{item.owner}})
+			</template>
 			<button @click="complete(item.id)">Complete</button>
 		</li>
 	</ul>

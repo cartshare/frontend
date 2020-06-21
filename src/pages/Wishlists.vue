@@ -20,7 +20,7 @@
 				credentials: "include"
 			})
 				.then(response => response.json())
-				.then(result => this.itemList = result.neighborRequests)
+				.then(result => console.log(this.itemList = result.neighborRequests))
 				.catch(error => alert(error));
 
 		}
