@@ -11,9 +11,9 @@
 <script>
 	export default {
 		name: "Navigation",
-		data: function () {
-			return {
-				navList: [
+		computed: {
+			navList: function() {
+				return [
 					{url: "/", name: "Home", show: true},
 					{url: "/signup", name: "Sign Up", show: !this.signedIn},
 					{url: "/login", name: "Log In", show: !this.signedIn},

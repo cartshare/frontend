@@ -1,6 +1,6 @@
 <template>
 	<main-layout>
-		<shopping-list :list="itemList"></shopping-list>
+		<shopping-list :list="itemList" :personal="false"></shopping-list>
 	</main-layout>
 </template>
 
@@ -13,6 +13,16 @@
 		components: {ShoppingList, MainLayout},
 		data: function () {
 			return {itemList: []}
+		},
+		created: function() {
+			fetch("http://localhost:80/neighborList", {
+				method: "GET",
+				credentials: "include"
+			})
+				.then(response => response.json())
+				.then(result => this.itemList = result.neighborRequests)
+				.catch(error => alert(error));
+
 		}
 	}
 </script>

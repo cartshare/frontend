@@ -1,8 +1,8 @@
 <template>
 	<main-layout>
 		<h3>Your List</h3>
-		<shopping-list :list="list"></shopping-list>
-		<a href="/create">Create Shopping Item</a>
+		<shopping-list :list="list" :personal="true"></shopping-list>
+		<a href="/create">Create Item</a>
 	</main-layout>
 </template>
 
@@ -14,7 +14,19 @@
 		name: "List",
 		components: {MainLayout, ShoppingList},
 		data: function () {
-			return {list: [{desc: "Item 1", qty: 3, onWishlist: true}]}
+			return {list: []}
+		},
+		created: function () {
+			fetch("http://localhost:80/list", {
+				method: "GET",
+				credentials: "include"
+			})
+				.then(response => response.json())
+				.then(result => {
+					console.log(result.items);
+					this.list = result.items;
+				})
+				.catch(error => alert(error));
 		}
 	}
 </script>

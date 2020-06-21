@@ -2,8 +2,8 @@
 	<main-layout>
 		<form @submit.prevent="send">
 			<div class="error" v-if="err">{{err}}</div>
-			<label for="username">Email: </label>
-			<input id="username" name="username" type="email" placeholder="Email" required/>
+			<label for="email">Email: </label>
+			<input id="email" name="email" type="email" placeholder="Email" required/>
 			<br/>
 			<label for="password">Password: </label>
 			<input id="password" name="password" type="password" placeholder="Password" required/>
@@ -33,6 +33,7 @@
 
 				fetch("http://localhost:80/login", {
 					method: "POST",
+					credentials: "include",
 					body: json
 				})
 					.then(response => response.json())

@@ -13,6 +13,7 @@
 			<br/>
 			<label for="address">Address: </label>
 			<input id="address" name="address" type="text" placeholder="Address" required>
+			<br/>
 			<input type="submit"/>
 		</form>
 	</main-layout>
@@ -38,6 +39,7 @@
 
 				fetch("http://localhost:80/signup", {
 					method: "POST",
+					credentials: "include",
 					body: json
 				})
 					.then(response => response.json())
